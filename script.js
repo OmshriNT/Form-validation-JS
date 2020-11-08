@@ -3,12 +3,13 @@ const username = document.getElementById('username')
 const email = document.getElementById('email')
 const password = document.getElementById('password')
 const password2 = document.getElementById('password2')
+const btn = document.getElementById("btn")
 
 form.addEventListener('submit', (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     checkInputs();
-    // checkSuccess();
+    
 });
 
 function checkInputs() {
@@ -72,21 +73,28 @@ function isEmail(email) {
     return re.test(String(email).toLowerCase());
 }
 
+
 function checkSuccess() {
     //show a success message
     const list = document.querySelectorAll('.form-control');
     const flag = 0;
 
-    for (let i = 0; i < list.length; i++) {
-        if (nodeList[i].className === 'success') {
-            continue;
-        } else {
+    if(list.length === 0) {
+        alert("Form submission failed.");
+    } 
+    else {
+        for (let i = 0; i < list.length; i++) {
+            if (list[i].className === 'success') {
+                continue;
+            }
+    
             flag = 1;
             break;
         }
-    }
-
-    if(flag === 0 ) {
-        alert("Form Submitted!");
+            
+        if(flag === 0){ 
+            alert('Form submitted');
+        }
     }
 }
+
